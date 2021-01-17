@@ -1,0 +1,5 @@
+Pozmění přeposílání mailu na můj účet - GET
+Po 2 sekundách se přesměruje na xss skript, který změní otázku bezpečnostní.
+Nechávám záznam všech změněných ip adres v questionchange.txt - proto php jinak lze udělat v html
+
+Zase je tam kódování pro překlad na správnou ip se musím udělat znova.
