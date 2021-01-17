@@ -1,0 +1,63 @@
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+bin:x:2:2:bin:/bin:/bin/sh
+sys:x:3:3:sys:/dev:/bin/sh
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/bin/sh
+man:x:6:12:man:/var/cache/man:/bin/sh
+lp:x:7:7:lp:/var/spool/lpd:/bin/sh
+mail:x:8:8:mail:/var/mail:/bin/sh
+news:x:9:9:news:/var/spool/news:/bin/sh
+uucp:x:10:10:uucp:/var/spool/uucp:/bin/sh
+proxy:x:13:13:proxy:/bin:/bin/sh
+www-data:x:33:33:www-data:/var/www:/bin/bash
+backup:x:34:34:backup:/var/backups:/bin/sh
+list:x:38:38:Mailing List Manager:/var/list:/bin/sh
+irc:x:39:39:ircd:/var/run/ircd:/bin/sh
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh
+nobody:x:65534:65534:nobody:/nonexistent:/bin/sh
+libuuid:x:100:101::/var/lib/libuuid:/bin/sh
+dhcp:x:101:102::/nonexistent:/bin/false
+syslog:x:102:103::/home/syslog:/bin/false
+klog:x:103:104::/home/klog:/bin/false
+hplip:x:104:7:HPLIP system user,,,:/var/run/hplip:/bin/false
+avahi-autoipd:x:105:113:Avahi autoip daemon,,,:/var/lib/avahi-autoipd:/bin/false
+gdm:x:106:114:Gnome Display Manager:/var/lib/gdm:/bin/false
+pulse:x:107:116:PulseAudio daemon,,,:/var/run/pulse:/bin/false
+messagebus:x:108:119::/var/run/dbus:/bin/false
+avahi:x:109:120:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/bin/false
+polkituser:x:110:122:PolicyKit,,,:/var/run/PolicyKit:/bin/false
+haldaemon:x:111:123:Hardware abstraction layer,,,:/var/run/hald:/bin/false
+mysql:x:112:124:MySQL Server,,,:/var/lib/mysql:/bin/false
+sshd:x:113:65534::/var/run/sshd:/usr/sbin/nologin
+dovecot:x:114:126:Dovecot mail server,,,:/usr/lib/dovecot:/bin/false
+smmta:x:115:127:Mail Transfer Agent,,,:/var/lib/sendmail:/bin/false
+smmsp:x:116:128:Mail Submission Program,,,:/var/lib/sendmail:/bin/false
+postfix:x:117:129::/var/spool/postfix:/bin/false
+proftpd:x:118:65534::/var/run/proftpd:/bin/false
+ftp:x:119:65534::/home/ftp:/bin/false
+snmp:x:120:65534::/var/lib/snmp:/bin/false
+ntp:x:121:131::/home/ntp:/bin/false
+webadmin:x:1022:500::/home/webadmin:/sbin/nologin
+admin:x:1023:500::/home/admin:/sbin/nologin
+harry:x:1024:500::/home/harry:/sbin/nologin
+oliver:x:1025:500::/home/oliver:/sbin/nologin
+sophie:x:1027:500::/home/sophie:/sbin/nologin
+hannah:x:1028:500::/home/hannah:/sbin/nologin
+lucy:x:1029:500::/home/lucy:/sbin/nologin
+george:x:1030:500::/home/george:/sbin/nologin
+jenifer:x:1031:500::/home/jenifer:/sbin/nologin
+joey:x:1032:500::/home/joey:/sbin/nologin
+peter:x:1033:500::/home/peter:/sbin/nologin
+kate:x:1034:500::/home/kate:/sbin/nologin
+robert:x:1035:500::/home/robert:/sbin/nologin
+sapine:x:1036:500::/home/sapine:/sbin/nologin
+jane:x:1037:500::/home/jane:/sbin/nologin
+laura:x:1038:500::/home/laura:/sbin/nologin
+lukas:x:1039:500::/home/lukas:/sbin/nologin
+joseph:x:1040:500::/home/joseph:/sbin/nologin
+sylva:x:1041:500::/home/sylva:/sbin/nologin
+petrik:x:1042:500::/home/petrik:/sbin/nologin
+romank:x:1043:500::/home/romank:/sbin/nologin
+add:x:1044:500::/home/add:/sbin/nologin
+xss:x:1045:500::/home/xss:/sbin/nologin

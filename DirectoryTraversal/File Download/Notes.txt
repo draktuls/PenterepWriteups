@@ -1,0 +1,4 @@
+Na inc/mobile.php najdeme script na  download - inc/download.php?file=penterepmail.apk
+Argument můžeme upravit na cokoliv, jediné co nás omezuje je povolení www-data neboli web serveru
+Pokud chceme soubory jako passwd tak musíme strefit ../ složek - pokus a omyl
+Můžeme stáhnout zdrojáky -> heslo k mysql

