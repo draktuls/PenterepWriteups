@@ -1,0 +1,2 @@
+Clickjacking na reflected search stránku - vlastní button, může to být cokoliv
+Soubory patří na náš webový server
