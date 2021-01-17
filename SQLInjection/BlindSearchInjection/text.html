@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Reply-to" content="ccuminn@penterep.com">
+    <meta name="author" content="Roman KÃ¼mmel - .cCuMiNn.">
+    <meta name="robots" content="all, follow">
+    <meta name="language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="StyleSheet" href="http://10.0.2.10/bootstrap.min.css" type="text/css">
+    <link rel="StyleSheet" href="http://10.0.2.10/plugins/fontawesome/css/all.min.css" type="text/css">
+    <link rel="StyleSheet" href="base.css?type=css" type="text/css">
+    <link rel="bookmark" href="http://10.0.2.10" title="PenterepMail">
+    <link rel="icon" href="http://10.0.2.10/favicon.ico" type="image/x-icon">
+    <title>PenterepMail</title>
+</head>
+<body>
+<div class="navbar navbar-expand fixed-top" id="headerline">
+    
+    <!-- NAVBAR section start -->
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">
+            <span class="ml-4 font-weight-bold">PenterepMail</span><span class="d-none d-sm-inline"> - vulnerable webmail</span><span class="small ml-2">(v0.9)</span>        </a>
+        <div class="collapse navbar-collapse">
+            <div class="btn-group navbar-nav ml-auto d-none d-sm-inline">
+                                    <button class="btn btn-sm dropdown-toggle align-top" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="/images/flags/en.png" class="flaglink" width="24">
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="?lang=cs"><img src="/images/flags/cs.png" class="flaglink mr-2" width="24">ÄeÅ¡tina</a>
+                    <a class="dropdown-item" href="?lang=en"><img src="/images/flags/en.png" class="flaglink mr-2" width="24">English</a>
+                    <a class="dropdown-item" href="?lang=de"><img src="/images/flags/de.png" class="flaglink mr-2" width="24">Deutsche</a>
+                    <a class="dropdown-item" href="?lang=ru"><img src="/images/flags/ru.png" class="flaglink mr-2" width="24">PÑÑÑÐºÐ¸Ð¹</a>
+                </div>
+            </div>
+            <div class="navbar-nav ml-auto d-sm-none">
+                <a href="#" class="nav-link nav-item" data-toggle="collapse" data-target=".mobile-collapse"><i class="fas fa-bars"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR section end -->
+    
+    <!-- TOAST section start -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="position: absolute; top: 40px; right: 40px; z-index: 10;">
+        <div class="toast-header">
+            <strong class="toast-title mr-auto"></strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body"></div>
+    </div>
+    <!-- TOAST section end -->
+</div>
+
+<div class="container-fluid" id="maincontainer">
+<div class="row">
+    
+<!-- MAINMENU section start -->
+<div class="col-sm-5 col-md-4 col-lg-3 show collapse mobile-collapse mobile-collapse-hide" id="mainmenu">
+    <nav class="text-center text-sm-left pb-1">
+        <div class="mb-sm-3 d-sm-none">
+            <div class="py-2 mainmenu-langs">
+                <a href="?lang=cs" class="px-1"><img src="/images/flags/cs.png" class="flaglink" width="24"></a>
+                <a href="?lang=en" class="px-1"><img src="/images/flags/en.png" class="flaglink" width="24"></a>
+                <a href="?lang=de" class="px-1"><img src="/images/flags/de.png" class="flaglink" width="24"></a>
+                <a href="?lang=ru" class="px-1"><img src="/images/flags/ru.png" class="flaglink" width="24"></a>
+            </div>
+        </div>
+        <a href="/?box=inc/index_box_nologin.php" class="nav-link d-inline-block active"><i class="fas fa-home mr-3"></i>Home</a>
+                <form action="/inc/search.php" method="get" class="form-group mb-3 mt-4">
+            <div class="input-group">
+                <input type="text" class="form-control form-control-sm" id="query" name="query">
+                <button type="submit" class="input-group-append btn btn-primary btn-sm"><i class="fas fa-search pt-1"></i></button>
+            </div>
+        </form>
+                    <div class="lead ml-1 mb-1">Login</div>
+            <form action="/" method="post" name="lgfrm">
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" placeholder="login" id="login" name="login" value="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-sm" placeholder="password" id="password" name="password">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                    <label class="form-check-label" for="remember">Remember me</label>
+                </div>
+                <input type="hidden" class="form-check-input" id="action" name="action" value="login">
+                <button type="submit" class="btn btn-sm btn-block btn-primary">Login</button>
+            </form>
+            <a href="/user/register.php" class="btn btn-sm btn-block btn-outline-primary mt-3">Registration</a>
+                </nav>
+</div><!-- MAINMENU section end -->
+
+<!-- MAIN section start -->
+<div class="col-sm show collapse mobile-collapse p-0">
+<div id="mainsection" class="">
+    <div class="circle1"></div><div class="circle2"></div>
+
+<div class="text-center">
+<h1 class="font-weight-bold">Vulnerable webmail</h1>
+
+<p class="lead">Welcome in application for demonstration vulnerabilities in web apps. The application is suitable for demonstration of individual attacks or for teaching IT security and penetration testing. List of included vulnerabilities is public on <a href="https://www.penterep.com" target="_blank">https://www.penterep.com</a>.</p>
+
+<div class="jumbotron py-4 mt-5 mb-0">
+    <h2>Challanges for you</h2>
+    <p class="lead">
+        There are prepared many challanges for you on web <a href="https://www.penterep.com" target="_blank">https://www.penterep.com</a> Sign up and compare your knowledge with others.    </p>
+    <h1><i id="topplayersicon" class="fas fa-trophy text-warning d-none"></i></h1>
+    <div id="topplayerslist" class="row lead"></div>
+    <script src="https://www.penterep.com/external/topplayers.php"></script>
+    <script>
+        if (topplayers) {
+            document.getElementById("topplayersicon").classList.remove("d-none");
+            document.getElementById("topplayerslist").innerHTML = topplayers;
+        }
+    </script>
+</div>
+</div>
+<div class="d-none mt-5" id="newVersion">
+    <a href="https://www.penterep.com" class="col-12 btn btn-danger text-center text-white" role="button">
+        <i class="fas fa-download mr-2"></i>Your version is out of date. New version is prepared for download here.    </a>
+</div>
+<script>
+    function checkVersion(latest) {
+        if (latest != "0.9") {
+            document.getElementById("newVersion").classList.remove("d-none");
+        }
+    }
+</script>
+<script src="https://www.penterep.com/external/version.js?1607181151"></script>
+</div>
+</div>
+<!-- MAIN section end -->
+
+</div>
+
+<!-- FOOTER section start -->
+<div class="row py-2 show collapse mobile-collapse" id="footer">
+    <div class="col-sm-6 col-lg-4 col-xl-3 text-center text-xl-left">
+        <a href="/redir.php?url=https://www.penterep.com" target="_blank">&copy; 2020 penterep.com</a>
+    </div>
+    <div class="col-sm-6 col-lg-4 col-xl text-center text-xl-left">
+        <a href="/inc/mobile.php">Mobile app</a>
+    </div>
+    <div class="col-sm-6 col-lg-4 col-xl text-center">
+        <a href="/inc/help.php">Help</a>
+    </div>
+    <div class="col-sm-6 col-lg-4 col-xl text-center text-xl-right">
+        <a href="/inc/competition.php">Competition</a>
+    </div>
+    <div class="col-sm-6 col-lg-4 col-xl text-center text-xl-right">
+        <a href="/e-shop">E-Shop</a>
+    </div>
+    <div class="col-sm-6 col-lg-4 col-xl text-center text-xl-right">
+        <a href="/inc/contactus.php">Contact</a>
+        <a href="https://www.facebook.com/Penterep" target="_blank" title="Follow us on Facebook"><i class="fab fa-facebook-square ml-2"></i></a>
+    </div>
+</div>
+</div>
+<!-- FOOTER section end -->
+
+<script src="http://10.0.2.10/js/jquery-3.4.1.min.js"></script>
+<script src="http://10.0.2.10/js/popper.min.js"></script>
+<script src="http://10.0.2.10/js/bootstrap.min.js"></script>
+<script src="http://10.0.2.10/js/uploader/jquery.multifile.js"></script>
+<script src="http://10.0.2.10/js/base.js"></script>
+</body>
+</html>

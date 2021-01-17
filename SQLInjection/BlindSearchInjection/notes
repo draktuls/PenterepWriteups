@@ -1,0 +1,35 @@
+Na http://www.penterepmail.loc/inc/search.php?query=Admin zjistíme, že ta query hledá jména uživatelů
+ty následně zpracuje a vypíše email a jméno
+Pokud nikdo neexistuje napíše se že pro tento request neexistuje
+Tahle injection by nešla využít pro klasické zobrazení sql, protože je to nějakou podmínkou zobrazovací
+Zkusíme klasiku 'or 1=1 ta nám nic nenajde, tak zkusíme další jako je 'or 1=1 --
+furt nic, možná to není injection-able?
+Sql příkaz se ukončuje ; tak to zkusíme ukončit my - ' or 1=1 --; nám furt nic nezobrazí
+Pokud se podíváme do cookies, zjistíme, že zde je debug cookie, tak si ji zkusíme aktivovat.
+-------------------------------------------------------
+You have an error in your SQL syntax; check the manual 
+that corresponds to your MySQL server version for the 
+right syntax to use near 'ORDER BY name' at line 1
+-------------------------------------------------------
+V syntaxi vidíme, že se nám ani to ; nezobrazuje. Když dáme za ; cokoliv a načtem, zjistíme, že ; odděluje
+na části a počítá se jen ta první do query.
+Ale víme, že se nám injection podařila z části, jelikož v syntaxi není napsán celý náš dotaz
+Zkusíme si přepsat jak by dotaz mohl vypadat
+-------------------------------------------
+SELECT * FROM users WHERE name like '%dotaz' or 1=1 --ORDER BY name;
+% značí ať to začína nebo končí tím písmenem když je předtím like
+like je tam protože při chybné syntaxi se ukáže % a bez liku % nefungujou
+-------------------------------------------
+Když se na to podíváme, zjistíme kde je chyba, SQL je dost senzitivní na mezery.
+Tudíž upravíme dotaz na ' or 1=1 -- ;
+Který nám v debugu zahlásí chybu, ale pokud debug vypneme zjistíme všechny účty na serveru, jejich email a jméno.
+Tak v tuto chvíli víme, že nemůžeme dělat s db vše, jelikož to nevypisuje přesné hodnoty
+Ale co kdybychom napsali' and password ='karel' -- ;
+Zjistíme, že pokud kdokoliv na serveru má jako heslo karel, tak se nám daný uživatel vypíše ( Taky zjistíme, že db je v plain textu )
+Takže můžeme například vytvořit script pro dotazování na heslo/a (v irl by hesla byly hashovaný)
+Ještě si můžeme usnadnit práci přes like
+---------------------------------------------------
+' and password like 'h%25' -- ;
+najde všechny uživatele, kterým začíná heslo na h
+pokud chceme najít jak to končí dáme % před písmena
+---------------------------------------------------
