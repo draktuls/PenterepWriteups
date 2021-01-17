@@ -1,0 +1,9 @@
+http://www.penterepmail.loc/něco
+-----------------------------------------------------------
+Najdeme nejen reflected xss, ale ještě zranitelnost v cookie lang
+Lang nastavíme jednoduše
+-----------------------------------------------------------
+http://www.penterepmail.loc/settings/index?lang=<script>bblblalbal
+-----------------------------------------------------------
+A přes 404 ověříme
+

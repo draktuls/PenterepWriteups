@@ -1,0 +1,4 @@
+http://www.penterepmail.loc/
+-----------------------------------------------------------
+Je to cokoliv :Dd co neexistuje.
+Na 404 je ještě stored xss přes cookie lang

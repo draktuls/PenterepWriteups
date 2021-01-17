@@ -1,0 +1,3 @@
+http://www.penterepmail.loc/inc/competition_best.php
+-----------------------------------------------------------
+Leaderboard pro malou hru na webu, po výhře se píše jméno vítěze.

@@ -1,0 +1,4 @@
+http://www.penterepmail.loc/?box=inc/index_box_login.php
+-----------------------------------------------------------
+Ukáže minulou navšívenou stránku. 
+Celkem mindfuck xss, ale určitě by něco šlo vymyslet.
