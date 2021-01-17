@@ -1,0 +1,14 @@
+Upload kontroluje content type a taky pokud koncovka není .php
+Přes proxy můžu upravit content type na image/jpeg a php lze zapnout přes php3
+Přes inspect můžu zjistit script, který má zobrazit profilovku (náš reverse shell) /getimg.php?src=user22/shell.php3
+Přes script nejde procnout shell, protože to bere jako img
+Pokud se zadáme fake soubor zjistíme opravdovou lokaci obrázku - /var/www/penterepmail/images/portret/user22/
+(začínáme od penterepmail..)
+Pokud ale zadáme 10.0.2.10/images/portret/user22/shell.php3 zjistíme, že se nám shell chce stáhnout a ne aktivovat
+Je to protože .htaccess má vypnutý php scripty v této složce
+Nahrajem vlastní .htaccess
+Po znovuzadání máme nc connection jako www-data
+Odtud můžeme provést priv esc -> root a konec
+------------------------------------------------------------------------
+https://github.com/pentestmonkey/php-reverse-shell
+Pro shell
