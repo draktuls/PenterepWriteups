@@ -37,7 +37,7 @@ A zkoušíme najít způsob jak získat root nebo sudoer group
 	-rw-r--r-- 1 www-data www-data  329 2020-05-19 09:50 systeminfo.sh
 	-rwxr-xr-x 1 www-data www-data  415 2020-04-01 17:21 websocket_server.sh
 	-----------------------------------------------------------
-	Ale nemůžu, jen root může
+	Mohu protože soubor patří www-data přes který jsem přihlášen
 	Vim ani vi nefunguje kvůli dumb shellu 
 	Tak můžu zkusit echo 1 > pass.sh ( nebo newalias.sh je to jedno )
 	Success už vím jak do toho můžu něco napsat
@@ -47,7 +47,7 @@ A zkoušíme najít způsob jak získat root nebo sudoer group
 	bash: !/bin/sh: event not found
 	-----------------------------------------------------------
 	No tak očividně nám to moc nepůjde celé přepsat
-	Ale nám nevadí když se ty 2 cmd předtím udělají takže můžeme použít append což je >> 
+	Ale nám nevadí když se ty 2 cmd předtím udělají takže můžeme použít append, což je >> 
 	-----------------------------------------------------------
 	echo "/bin/bash" >> pass.sh 
 	-----------------------------------------------------------
@@ -75,4 +75,3 @@ A zkoušíme najít způsob jak získat root nebo sudoer group
 	Nebo změnit ve zdrojáku jméno na root a teoreticky by to mělo jít - každopádně hashe 
 	jsou normálně v etc/shadow, pro rl example bych určitě vrátil backup a vytvořil sudoera
 3) Z předchozího scanu víme, že tak 98% věci jsou zastaralé -> veřejné CVE xxxx-xxxx na local priv escalation 
-	To be continued
